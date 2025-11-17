@@ -1,0 +1,45 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+import numpy as np
+import statsmodels.api as sm
+
+once_dataset = pd.read_csv('data/once_dataset.csv')
+habit_dataset = pd.read_csv('data/habit_dataset.csv')
+
+once_dataset['optimal_datetime'] = pd.to_datetime(once_dataset['optimal_datetime']).astype('int64') // 10**9
+habit_dataset['optimal_datetime'] = pd.to_datetime(habit_dataset['optimal_datetime']).astype('int64') // 10**9
+
+
+once_regr = LinearRegression()
+once_regr.fit(once_dataset.drop('optimal_datetime'), once_dataset['optimal_datetime'])
+
+habit_regr = LinearRegression()
+habit_regr.fit(habit_dataset.drop('optimal_datetime'), habit_dataset['optimal_datetime'])
+def predict_schedule(tasks):
+    result = []
+    for task in tasks:
+        X = np.array([[]])
+        if task.type == 'once':
+            X = np.array([[
+                task.priority,
+                task.duration, 
+                task.deadline_days
+            ]])
+            result.append({
+                "name": task.name,
+                "predict_time": 'hello',
+                "priority": task.priority
+            })
+        else:
+            X = np.array([[
+                task.priority,
+                task.duration
+            ]])
+            result.append({
+                "name": task.name,
+                "predict_time": pd.to_datetime(habit_regr.predict(X)[0], unit='s').strftime('%Y-%m-%d %H:%M'),
+                "priority": task.priority
+            })
+    return result
+
