@@ -58,4 +58,8 @@ def read_root():
 @app.post("/analyze")
 def analyze_tasks(task_list: TaskList):
     schedule = predict_schedule(task_list.tasks)
+<<<<<<< HEAD
     return {"schedule" : schedule}
+=======
+    return {"schedule" : schedule}
+>>>>>>> 60280d4b2b9562183a4d46424d7dae5c97790c7e

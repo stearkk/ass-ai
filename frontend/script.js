@@ -319,4 +319,8 @@ function deleteTask(index) {
 window.addExactTime = addExactTime;
 window.removeExactTime = removeExactTime;
 window.addTask = addTask;
+<<<<<<< HEAD
 window.deleteTask = deleteTask;
+=======
+window.deleteTask = deleteTask;
+>>>>>>> 60280d4b2b9562183a4d46424d7dae5c97790c7e
