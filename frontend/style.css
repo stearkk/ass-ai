@@ -1,0 +1,23 @@
+body {
+  font-family: sans-serif;
+  background: #f2f2f2;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 50px;
+  background: white;
+}
+h1 {
+  text-align: center;
+}
+.form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+button {
+  cursor: pointer;
+}
+li {
+  margin: 6px 0;
+}
